@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jugar - ¿Quién Quiere Ser Millonario?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="app-bg">
+  <div class="container mx-auto px-4 py-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-blue-800">¿Quién Quiere Ser Millonario?</h1>
+        <a href="/" class="text-blue-500 hover:text-blue-700">
+          <i class="fas fa-home mr-1"></i> Volver al inicio
+        </a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-xl p-6 mb-8">
+        <div class="flex justify-between items-center mb-4">
+          <div class="text-lg font-semibold">
+            Pregunta <span id="currentQuestion">1</span> de <span id="totalQuestions">?</span>
+          </div>
+          <div class="timer text-xl font-bold">
+            <i class="fas fa-clock mr-2"></i><span id="timeLeft">15</span>s
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+        </div>
+
+        <div id="questionContainer" class="mb-6">
+          <div id="questionText" class="text-xl font-medium mb-4">Cargando pregunta...</div>
+          <img id="questionImage" src="" alt="Question image" class="w-full h-48 object-cover rounded mb-4 hidden">
+        </div>
+
+        <div id="answersContainer" class="space-y-3">
+          <button class="answer-btn bg-gray-100 hover:bg-gray-200" onclick="selectAnswer(0)">
+            <span class="font-bold mr-2">A:</span><span id="answer0">Cargando...</span>
+          </button>
+          <button class="answer-btn bg-gray-100 hover:bg-gray-200" onclick="selectAnswer(1)">
+            <span class="font-bold mr-2">B:</span><span id="answer1">Cargando...</span>
+          </button>
+          <button class="answer-btn bg-gray-100 hover:bg-gray-200" onclick="selectAnswer(2)">
+            <span class="font-bold mr-2">C:</span><span id="answer2">Cargando...</span>
+          </button>
+          <button class="answer-btn bg-gray-100 hover:bg-gray-200" onclick="selectAnswer(3)">
+            <span class="font-bold mr-2">D:</span><span id="answer3">Cargando...</span>
+          </button>
+        </div>
+
+        <div id="resultMessage" class="mt-4 p-3 rounded hidden"></div>
+
+        <button id="nextButton" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 hidden">
+          Siguiente Pregunta <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-xl p-6">
+        <h2 class="text-xl font-semibold mb-4">Tu Progreso</h2>
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-lg font-medium">Puntaje:</span>
+            <span id="score" class="text-2xl font-bold ml-2">0</span>
+          </div>
+          <div id="lifelines" class="flex space-x-2">
+            <button class="bg-yellow-500 text-white px-3 py-1 rounded" title="50:50">
+              <i class="fas fa-adjust"></i>
+            </button>
+            <button class="bg-green-500 text-white px-3 py-1 rounded" title="Público">
+              <i class="fas fa-users"></i>
+            </button>
+            <button class="bg-red-500 text-white px-3 py-1 rounded" title="Llamada">
+              <i class="fas fa-phone"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameOverModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full">
+      <h2 class="text-2xl font-bold text-center mb-4" id="gameOverTitle">¡Juego Terminado!</h2>
+      <p class="text-center mb-6" id="gameOverMessage">Tu puntaje final es: <span class="font-bold">0</span></p>
+      <div class="flex space-x-4">
+        <button onclick="restartGame()" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+          Jugar de Nuevo
+        </button>
+        <a href="/" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded text-center">
+          Volver al Inicio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts.js"></script>
+</body>
+</html>
